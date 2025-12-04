@@ -4,6 +4,11 @@
 
 This directory contains mobile applications (iOS and Android) and any supporting software for the GeoPen project.
 
+**Device Geometry Reference**: 
+- Device receives angle measurements from hardware
+- Angles calculated based on IMU sensor at (0, 0, 15) mm position
+- See `docs/mechanical/COMPONENT_DIMENSIONS.md` for device 3D specifications
+
 ## Structure
 
 ```

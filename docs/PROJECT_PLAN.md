@@ -30,13 +30,13 @@
 ### Phase 2: Design and Specification (Months 3-4)
 
 **Deliverables**:
-- [ ] Detailed hardware design
+- [x] Detailed hardware design (with 3D coordinates)
 - [ ] Software architecture
 - [ ] User interface mockups
-- [ ] Mechanical design (CAD)
-- [ ] PCB layout design
+- [ ] Mechanical design (CAD with 3D coordinate system)
+- [ ] PCB layout design (with component coordinates)
 - [ ] Mobile app wireframes
-- [ ] Technical specifications document
+- [x] Technical specifications document (with geometric specifications)
 
 **Activities**:
 - Hardware component selection

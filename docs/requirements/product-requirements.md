@@ -95,9 +95,14 @@ GeoPen is a portable, pencil-like device that measures core alpha and beta angle
 
 **NFR-1: Form Factor**
 - Pencil-like shape and size
-- Length: 15-20 cm (similar to standard pencil)
-- Diameter: 1.5-2.5 cm (comfortable grip)
-- Weight: <200g (lightweight for field use)
+- Length: 180 mm (18 cm) - **TARGET: ±2mm**
+- Diameter: 20 mm (2.0 cm) at grip - **MAXIMUM: MUST NOT EXCEED**
+- Weight: <200g (target: 150-180g, lightweight for field use)
+- **3D Coordinate System**: 
+  - Origin (0,0,0): Device tip center
+  - Z-axis: Longitudinal axis (0mm tip → 180mm top)
+  - X, Y axes: Horizontal plane
+  - See `docs/mechanical/MECHANICAL_ENGINEER_HANDOVER.md` for complete 3D specifications
 
 **NFR-2: Durability**
 - IP54 or better (dust and water resistance)

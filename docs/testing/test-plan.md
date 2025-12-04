@@ -40,12 +40,16 @@ This document outlines the testing strategy for GeoPen hardware and software com
 - [ ] Repeatability (±1°)
 - [ ] Temperature stability
 - [ ] Long-term drift
+- [ ] IMU sensor alignment verification (position: 0,0,15mm, tolerance: ±0.1°)
+- [ ] Coordinate system alignment check (device vs. sensor axes)
 
 #### Environmental Tests
 - [ ] IP54 rating (dust and splash)
 - [ ] Temperature range (-10°C to 50°C)
 - [ ] Shock resistance (1m drop)
 - [ ] Vibration resistance
+- [ ] Geometric stability (dimensions: 180mm length, 20mm diameter)
+- [ ] Component position stability after impact (verify 3D coordinates maintained)
 
 #### Power Tests
 - [ ] Battery life (8+ hours continuous)

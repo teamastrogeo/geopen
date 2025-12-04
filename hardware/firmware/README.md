@@ -4,6 +4,11 @@
 
 Embedded firmware for the GeoPen device, running on ARM Cortex-M4 microcontroller.
 
+**Device Geometry Reference**:
+- Coordinate System: Origin at tip (0,0,0), Z-axis 0-180mm
+- IMU Sensor Position: (0, 0, 15) mm - Critical alignment ±0.1°
+- See `docs/mechanical/COMPONENT_DIMENSIONS.md` for complete 3D coordinates
+
 ## Architecture
 
 ```

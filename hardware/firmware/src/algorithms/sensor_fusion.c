@@ -3,6 +3,12 @@
  * 
  * Based on: Madgwick, S.O.H., et al. "An efficient orientation filter for 
  * inertial and inertial/magnetic sensor arrays"
+ * 
+ * CRITICAL: Sensor must be physically aligned with device coordinate system
+ * - IMU Position: (0, 0, 15) mm from tip center
+ * - Alignment: Sensor X/Y/Z axes must match device X/Y/Z axes
+ * - Tolerance: ±0.1° alignment required for accuracy
+ * - See docs/mechanical/COMPONENT_DIMENSIONS.md for physical specifications
  */
 
 #include "algorithms/sensor_fusion.h"

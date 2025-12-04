@@ -6,6 +6,11 @@
 **Objective**: Validate core technology and create working prototype  
 **Success Criteria**: Working device that can measure angles and communicate with mobile app
 
+**3D Design Reference**: 
+- All components have defined 3D coordinates (see `docs/mechanical/COMPONENT_DIMENSIONS.md`)
+- IMU sensor alignment critical: Position (0,0,15mm), Tolerance ±0.1°
+- Device geometry: 180mm length, 20mm diameter, coordinate system defined
+
 ## Phase Goals
 
 1. ✅ Validate sensor accuracy (±2-3°)

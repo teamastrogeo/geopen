@@ -2,6 +2,14 @@
  * IMU Driver Interface
  * 
  * Provides interface for reading IMU sensor data (accelerometer, gyroscope)
+ * 
+ * CRITICAL: IMU sensor must be aligned with device coordinate system
+ * - Physical Location: (0, 0, 15) mm from tip center
+ * - Alignment Tolerance: ±0.1° for X, Y, Z axes
+ * - Sensor X-axis → Device X-axis (parallel)
+ * - Sensor Y-axis → Device Y-axis (parallel)  
+ * - Sensor Z-axis → Device Z-axis (parallel)
+ * - See docs/mechanical/COMPONENT_DIMENSIONS.md for 3D coordinates
  */
 
 #ifndef IMU_DRIVER_H

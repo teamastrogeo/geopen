@@ -39,20 +39,27 @@ This directory contains all documentation related to mechanical design and engin
 
 ## Quick Reference
 
-### Critical Requirements
-- **Length**: 18 cm (180mm)
-- **Diameter**: 2.0 cm (20mm) - **MUST NOT EXCEED**
-- **Weight**: <200g
+### Critical Requirements (3D Geometry)
+- **Length**: 180 mm (18 cm) - Z-axis: 0mm (tip) to 180mm (top)
+- **Diameter**: 20 mm (2.0 cm) outer, 18 mm inner - **MUST NOT EXCEED**
+- **Weight**: <200g (target: 150-180g)
 - **IP Rating**: IP54 minimum
 - **Materials**: Anodized aluminum or reinforced plastic
+- **Coordinate System**: Origin at tip (0,0,0), Z-axis upward
+- **IMU Alignment**: Critical ±0.1° tolerance at (0, 0, 15) mm
 
-### Key Components
-- Battery: 1000-1500 mAh Li-ion/Li-poly
-- Main PCB: ~35-45mm x 12-18mm
-- IMU Sensor: BMI160 or MPU6050
-- USB-C connector: Bottom
-- Buttons: Power + Trigger
-- LEDs: 3-4 status LEDs
+### Key Components (with 3D Coordinates)
+- **Battery**: 1000-1500 mAh Li-ion/Li-poly
+  - Center: (0, 0, 140) mm, Z-range: 115-165mm
+- **Main PCB**: ~35-45mm x 12-18mm
+  - Center: (0, 0, 90) mm, Z-range: 70-110mm
+- **IMU Sensor**: BMI160 or MPU6050
+  - Center: (0, 0, 15) mm - **CRITICAL alignment**
+  - Alignment tolerance: ±0.1°
+- **USB-C connector**: Bottom at (0, 0, 3) mm
+- **Power Button**: (0, 10, 175) mm
+- **Trigger Button**: (10, 0, 50) mm
+- **LEDs**: (0, 10, 170-176) mm - 4 status LEDs
 
 ### Timeline
 - Month 1: Concept design

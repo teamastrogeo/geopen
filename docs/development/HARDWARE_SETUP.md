@@ -4,6 +4,11 @@
 
 This guide helps you set up the hardware development environment for GeoPen proof-of-concept testing.
 
+**3D Design Reference**: 
+- Device coordinate system: Origin at tip (0,0,0), Z-axis 0-180mm
+- IMU sensor position: (0, 0, 15) mm - Critical alignment required
+- See `docs/mechanical/COMPONENT_DIMENSIONS.md` for complete 3D specifications
+
 ## Recommended Hardware
 
 ### Option 1: Nordic nRF52840 Development Kit (Recommended)

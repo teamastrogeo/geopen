@@ -43,8 +43,19 @@ GeoPen_2025/
 
 ## Key Definitions
 
-- **Alpha (α) Angle**: The inclination of a planar feature relative to the core axis
-- **Beta (β) Angle**: The circumferential angle between the orientation reference line and the feature's trace on the core surface
+- **Alpha (α) Angle**: The inclination of a planar feature relative to the core axis (0-90°)
+- **Beta (β) Angle**: The circumferential angle between the orientation reference line and the feature's trace on the core surface (0-360°)
+
+## 3D Design & Geometry
+
+All design documents include comprehensive 3D coordinate systems, geometric specifications, angles, and lengths for collaborative engineering:
+
+- **Coordinate System**: Right-handed Cartesian (X, Y, Z)
+- **Origin**: Device tip center (0, 0, 0)
+- **Z-axis**: Longitudinal axis (0mm tip → 180mm top)
+- **Units**: Millimeters (mm) for distances, Degrees (°) for angles
+- **Component Coordinates**: All components have defined 3D coordinate points
+- See `docs/mechanical/MECHANICAL_ENGINEER_HANDOVER.md` for complete 3D specifications
 
 ## Getting Started
 
@@ -81,8 +92,15 @@ GeoPen_2025/
 ### For Mechanical Engineering
 1. Start with `docs/mechanical/MECHANICAL_ENGINEER_HANDOVER.md` for complete handover package
 2. Review `docs/mechanical/DOCUMENT_CHECKLIST.md` for all documents
-3. Check `docs/mechanical/COMPONENT_DIMENSIONS.md` for component reference
-4. Review design documents in `docs/design/` for specifications
+3. Check `docs/mechanical/COMPONENT_DIMENSIONS.md` for component reference with 3D coordinates
+4. Review `docs/3D_COORDINATE_SYSTEM.md` for coordinate system quick reference
+5. Review design documents in `docs/design/` for specifications
+
+### For All Engineers - 3D Design
+1. Review `docs/3D_COORDINATE_SYSTEM.md` for coordinate system reference
+2. All components have defined 3D coordinate points
+3. Use consistent coordinate system across all disciplines
+4. See `docs/mechanical/COMPONENT_DIMENSIONS.md` for detailed component coordinates
 
 ## Development Status
 
@@ -106,4 +124,3 @@ GeoPen_2025/
 - `docs/development/PROOF_OF_CONCEPT_PHASE.md` - Phase plan
 - `docs/development/POC_CHECKLIST.md` - Execution checklist
 - `docs/development/QUICK_START.md` - Quick setup guide
-

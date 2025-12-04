@@ -1,5 +1,13 @@
 /**
  * Angle Calculation Implementation
+ * 
+ * Calculates alpha (0-90°) and beta (0-360°) angles from sensor orientation.
+ * 
+ * Device Geometry:
+ * - IMU Sensor at (0, 0, 15) mm must be aligned with device axes
+ * - Alpha angle: Inclination relative to Z-axis (device longitudinal axis)
+ * - Beta angle: Circumferential angle around Z-axis
+ * - See docs/mechanical/ for 3D coordinate system
  */
 
 #include "algorithms/angle_calc.h"

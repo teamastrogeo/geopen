@@ -7,6 +7,11 @@
  * - BLE communication with mobile app
  * - Power management
  * - Calibration routines
+ * 
+ * Device Geometry Reference:
+ * - Coordinate System: Origin at tip (0,0,0), Z-axis upward to 180mm
+ * - IMU Sensor Position: (0, 0, 15) mm - CRITICAL alignment required
+ * - See docs/mechanical/ for complete 3D specifications
  */
 
 #include <stdint.h>
