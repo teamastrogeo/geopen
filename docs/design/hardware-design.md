@@ -142,11 +142,21 @@
 
 ## 3. Sensor Integration
 
-### 3.1 IMU Mounting
+### 3.1 IMU Mounting (Critical for 360° Measurement)
+- **Physical Position**: (0, 0, 15) mm from tip center
 - **Orientation**: Fixed relative to device axis
+  - Sensor X-axis → Device X-axis (parallel)
+  - Sensor Y-axis → Device Y-axis (parallel)
+  - Sensor Z-axis → Device Z-axis (parallel)
 - **Mounting**: Secure, vibration-resistant
 - **Alignment**: Critical for accurate measurement
+  - **Tolerance**: ±0.1° for all axes - **MUST MAINTAIN**
+  - Misalignment affects both alpha and beta angle accuracy
 - **Calibration**: Factory calibration of sensor orientation
+- **360° Beta Measurement**: 
+  - Requires magnetometer for absolute heading (0-360°)
+  - Without magnetometer: Relative measurement (needs reference calibration)
+  - Yaw angle (rotation around Z-axis) converted to 0-360° range
 
 ### 3.2 Contact Sensor
 - **Type**: Pressure sensor or microswitch

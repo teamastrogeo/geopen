@@ -80,15 +80,26 @@ Grip Center:        P3 = (0, 0, 100)
   - Secure mounting
   - Protection from impact
 
-#### 3. IMU Sensor (Critical)
-- **Type**: 6-axis or 9-axis IMU (BMI160, MPU6050, or similar)
+#### 3. IMU Sensor (Critical - 360° Beta Measurement)
+- **Type**: 9-axis IMU recommended (BMI160 + magnetometer, MPU6050 + magnetometer, or ICM-20948)
+  - **Why 9-axis**: Magnetometer enables absolute 360° beta angle measurement
+  - **Alternative**: 6-axis IMU works but requires relative calibration
 - **Size**: ~3mm x 3mm x 1mm (package dependent)
-- **Location**: Near tip, aligned with device axis
+- **Location**: (0, 0, 15) mm from tip center - **CRITICAL POSITION**
 - **Critical Requirements**:
   - **Fixed orientation** relative to device axis
   - **Vibration-resistant mounting**
   - **Proper alignment** (critical for accuracy)
+    - X-axis alignment: 0° ±0.1°
+    - Y-axis alignment: 0° ±0.1°
+    - Z-axis alignment: 0° ±0.1°
   - **Minimal flex** in mounting structure
+  - **Magnetometer placement**: Must be away from metal components (affects 360° measurement)
+- **360° Beta Angle**: 
+  - Measured as rotation around Z-axis (device longitudinal axis)
+  - Magnetometer provides absolute heading reference
+  - Range: 0° to 360° (full circle)
+  - See `docs/design/MEASUREMENT_MECHANISM.md` for details
 
 #### 4. Contact Sensor
 - **Type**: Pressure sensor or microswitch
@@ -121,13 +132,23 @@ Grip Center:        P3 = (0, 0, 100)
   - IP54 sealing
   - Color coding (power, measurement, battery, connection)
 
-#### 8. Optional Display
+#### 8. Display (Recommended - Shown in Design)
 - **Type**: Small OLED (1.3" or smaller, 128x64 pixels)
-- **Location**: Top or side
+- **Center Point**: P_DISP = (0, 10, 165) mm
+- **Location**: Top surface, visible during use
+- **Dimensions**: ~35mm x 20mm x 2mm
+- **Display Content**:
+  - Alpha angle (0-90°)
+  - Beta angle (0-360°) - **Full circle display**
+  - Battery level percentage
+  - Status icons (power, Bluetooth)
+  - Measurement quality indicator
 - **Requirements**:
-  - Visible in various lighting
+  - Visible in various lighting (daylight readable)
   - Protected from damage
   - IP54 sealing
+  - Low power consumption
+  - Real-time angle updates (10-20 Hz)
 
 ### 3D Component Layout with Coordinates
 

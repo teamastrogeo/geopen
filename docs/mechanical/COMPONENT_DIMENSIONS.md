@@ -109,13 +109,13 @@ This document provides reference dimensions, 3D coordinates, angles, and geometr
 - **Orientation**: Aligned with device axes (CRITICAL)
 - **Alignment Tolerance**: ±0.1° - **MUST MAINTAIN**
 
-#### BMI160 (Recommended)
-- **Package**: LGA-14
+#### BMI160 + Magnetometer (Recommended for 360° Beta)
+- **Package**: LGA-14 (BMI160) + separate magnetometer or ICM-20948 (9-axis)
 - **Dimensions**: 
   - Length (X): 3.0mm
   - Width (Y): 3.0mm
   - Height (Z): 0.95mm
-- **Center Point**: (0, 0, 15)
+- **Center Point**: (0, 0, 15) mm
 - **Corner Points** (on mounting surface):
   - P_IMU1 = (-1.5, -1.5, 14.525)  // Bottom-left
   - P_IMU2 = (1.5, -1.5, 14.525)   // Bottom-right
@@ -123,13 +123,17 @@ This document provides reference dimensions, 3D coordinates, angles, and geometr
   - P_IMU4 = (-1.5, 1.5, 14.525)   // Top-left
 - **Mounting**: Surface mount on PCB or separate board
 - **Orientation Angles**:
-  - X-axis alignment: 0° ±0.1°
-  - Y-axis alignment: 0° ±0.1°
-  - Z-axis alignment: 0° ±0.1°
+  - X-axis alignment: 0° ±0.1° - **CRITICAL**
+  - Y-axis alignment: 0° ±0.1° - **CRITICAL**
+  - Z-axis alignment: 0° ±0.1° - **CRITICAL for 360° beta**
 - **Sensor Axes** (must match device axes):
   - Sensor X → Device X: (1, 0, 0)
   - Sensor Y → Device Y: (0, 1, 0)
-  - Sensor Z → Device Z: (0, 0, 1)
+  - Sensor Z → Device Z: (0, 0, 1) - **This axis enables 360° beta measurement**
+- **360° Beta Measurement**:
+  - Rotation around Z-axis measured as yaw angle
+  - Magnetometer provides absolute heading (0-360°)
+  - Without magnetometer: Relative measurement (needs calibration)
 
 #### MPU6050 (Alternative)
 - **Package**: QFN-24

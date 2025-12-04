@@ -44,7 +44,14 @@ GeoPen_2025/
 ## Key Definitions
 
 - **Alpha (α) Angle**: The inclination of a planar feature relative to the core axis (0-90°)
-- **Beta (β) Angle**: The circumferential angle between the orientation reference line and the feature's trace on the core surface (0-360°)
+  - Measured as device inclination relative to Z-axis
+  - Range: 0° (horizontal) to 90° (vertical)
+
+- **Beta (β) Angle**: The circumferential angle around the core axis (0-360° full circle)
+  - Measured as rotation around device Z-axis (core longitudinal axis)
+  - Range: 0° to 360° (complete circle)
+  - Uses magnetometer for absolute heading reference
+  - See `docs/design/MEASUREMENT_MECHANISM.md` for detailed explanation
 
 ## 3D Design & Geometry
 

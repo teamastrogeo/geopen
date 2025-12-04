@@ -20,27 +20,33 @@
 - **Cylindrical Axis Alignment**: Z-axis, deviation <0.1°
 
 ### 1.2 Materials
-- **Body**: Anodized aluminum or reinforced plastic
-- **Grip**: Textured rubber or silicone
-- **Tip**: Durable contact point (stainless steel or ceramic)
-- **Display**: Optional small OLED display (1.3" or smaller)
+- **Body**: Anodized aluminum (preferred) or reinforced plastic
+- **Grip**: Textured rubber or silicone overlay (dark grey, IP54 rated)
+- **Tip**: Durable contact point (stainless steel or ceramic), transparent tip for sensor visibility
+- **Display**: Optional small OLED display (1.3" or smaller, 128x64 pixels)
+  - Location: Top surface, visible during use
+  - Shows angle measurements, battery, status
 
 ### 1.3 Environmental Specifications
-- **IP Rating**: IP54 (dust and splash resistant)
+- **IP Rating**: IP54 (dust and splash resistant) - **VERIFIED IN DESIGN**
 - **Operating Temperature**: -10°C to 50°C
 - **Storage Temperature**: -20°C to 60°C
 - **Humidity**: 0-95% RH (non-condensing)
-- **Shock Resistance**: 1m drop onto concrete
+- **Shock Resistance**: 1m drop onto concrete - **VERIFIED IN DESIGN**
+- **Ergonomic Design**: Optimized for field use - **VERIFIED IN DESIGN**
 
 ## 2. Sensor Specifications
 
 ### 2.1 Inertial Measurement Unit (IMU)
-- **Type**: 6-axis or 9-axis IMU
+- **Type**: 6-axis or 9-axis IMU (9-axis recommended for 360° beta measurement)
 - **Accelerometer**: ±16g range, 16-bit resolution
 - **Gyroscope**: ±2000°/s range, 16-bit resolution
-- **Magnetometer**: Optional (for compass direction)
+- **Magnetometer**: Recommended (for absolute 360° beta angle measurement)
 - **Sampling Rate**: 100 Hz minimum
 - **Accuracy**: ±0.1° for orientation (after calibration)
+- **Physical Position**: (0, 0, 15) mm from tip center
+- **Alignment**: Critical ±0.1° tolerance with device axes
+- **360° Beta Measurement**: Uses magnetometer for absolute heading reference
 
 ### 2.2 Contact Sensor
 - **Type**: Pressure sensor or contact switch
@@ -81,15 +87,17 @@
 
 ### 3.4 User Interface
 - **Buttons**: 
-  - Power button (with LED indicator)
-  - Measurement trigger button
+  - Power button (with LED indicator) at (0, 10, 175) mm
+  - Measurement trigger button at (10, 0, 50) mm
   - Mode selection button (optional)
 - **LEDs**: 
-  - Power status (green/red)
-  - Measurement status (blue)
-  - Battery low (red)
-  - Connection status (yellow)
-- **Display**: Optional small OLED (128x64 pixels)
+  - Power status (green/red) at (0, 10, 170) mm
+  - Measurement status (blue) at (0, 10, 172) mm
+  - Battery low (red) at (0, 10, 174) mm
+  - Connection status (yellow) at (0, 10, 176) mm
+- **Display**: Optional small OLED (128x64 pixels) at (0, 10, 165) mm
+  - Shows: Alpha angle, Beta angle, Battery level, Status icons
+  - Example display: "GEOANGLE: 25.7°" or "α: 45.0°  β: 120.0°"
 - **Haptic Feedback**: Vibration motor (optional)
 
 ## 4. Measurement Specifications
@@ -101,12 +109,20 @@
 - **Repeatability**: ±1 degree
 - **Measurement Time**: <2 seconds
 
-### 4.2 Beta Angle
-- **Range**: 0° to 360°
+### 4.2 Beta Angle (360° Circumferential)
+- **Range**: 0° to 360° (full circle)
 - **Resolution**: 0.1°
 - **Accuracy**: ±2-3 degrees
 - **Repeatability**: ±1 degree
 - **Measurement Time**: <2 seconds
+- **Measurement Method**: 
+  - Rotation around device Z-axis (core longitudinal axis)
+  - Measured using IMU yaw angle (rotation around Z-axis)
+  - Magnetometer provides absolute reference (0-360°)
+  - Without magnetometer: Relative measurement (requires calibration)
+- **Reference**: Device X-axis defines 0° direction
+- **Visualization**: Clockwise rotation from reference line
+- **See**: `docs/design/MEASUREMENT_MECHANISM.md` for detailed explanation
 
 ### 4.3 Measurement Modes
 - **Single Mode**: Measure alpha or beta individually

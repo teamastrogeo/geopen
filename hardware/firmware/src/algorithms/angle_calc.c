@@ -6,8 +6,18 @@
  * Device Geometry:
  * - IMU Sensor at (0, 0, 15) mm must be aligned with device axes
  * - Alpha angle: Inclination relative to Z-axis (device longitudinal axis)
- * - Beta angle: Circumferential angle around Z-axis
- * - See docs/mechanical/ for 3D coordinate system
+ * - Beta angle: Circumferential angle around Z-axis (360° full circle)
+ * 
+ * Beta Angle (360° Measurement):
+ * - Measured as rotation around device Z-axis (core longitudinal axis)
+ * - Range: 0° to 360° (full circle)
+ * - Yaw angle from sensor fusion converted to 0-360° range
+ * - With magnetometer: Absolute heading (0-360°)
+ * - Without magnetometer: Relative measurement (requires calibration)
+ * - Formula: beta = (yaw_degrees + 360) % 360
+ * 
+ * See docs/mechanical/ for 3D coordinate system
+ * See docs/design/MEASUREMENT_MECHANISM.md for detailed explanation
  */
 
 #include "algorithms/angle_calc.h"
@@ -44,13 +54,29 @@ void calculate_angles(const quaternion_t* quat, measurement_angles_t* angles) {
 void calculate_angles_from_euler(const euler_angles_t* euler, measurement_angles_t* angles) {
     // Alpha angle: absolute value of pitch (0-90 degrees)
     // Pitch is rotation around Y-axis
+    // Represents inclination of planar feature relative to core axis
     float pitch_deg = fabsf(euler->pitch * RAD_TO_DEG);
     angles->alpha = (pitch_deg > 90.0f) ? 90.0f : pitch_deg;
     
-    // Beta angle: yaw converted to 0-360 degrees
-    // Yaw is rotation around Z-axis
+    // Beta angle: yaw converted to 0-360 degrees (FULL CIRCLE)
+    // Yaw is rotation around Z-axis (device longitudinal axis)
+    // Represents circumferential angle around core axis
+    // Range: 0° to 360° (full circle measurement)
     float yaw_deg = euler->yaw * RAD_TO_DEG;
+    
+    // Convert from -180° to +180° range to 0° to 360° range
+    // Formula ensures full 360° coverage:
+    // - Negative angles become 180° to 360°
+    // - Positive angles remain 0° to 180°
     angles->beta = fmodf(yaw_deg + 360.0f, 360.0f);
+    
+    // Ensure beta is in valid range [0, 360)
+    if (angles->beta < 0.0f) {
+        angles->beta += 360.0f;
+    }
+    if (angles->beta >= 360.0f) {
+        angles->beta -= 360.0f;
+    }
     
     // Calculate quality score
     angles->quality_score = calculate_quality_score(angles);
