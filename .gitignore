@@ -1,0 +1,61 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build outputs
+build/
+dist/
+*.o
+*.elf
+*.hex
+*.bin
+
+# Dependencies
+node_modules/
+venv/
+env/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Documentation builds
+docs/_build/
+site/
+
+# Environment variables
+.env
+.env.local
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Compiled files
+*.pyc
+__pycache__/
+
+# Firmware
+firmware/build/
+firmware/.pio/
+
+# Mobile apps
+ios/Pods/
+android/.gradle/
+android/app/build/
+*.apk
+*.ipa
+
