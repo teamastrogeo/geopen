@@ -73,33 +73,60 @@
 - **Tip Section**: Contact point for core surface
 - **Body Section**: Main electronics housing
 
-### 2.2 Component Layout
+### 2.2 Component Layout with 3D Coordinates
+
+**Coordinate System**: Origin at tip center (0,0,0), Z-axis upward, units in mm
+
 ```
 ┌─────────────────────────────────────┐
-│  [Power Button] [LEDs]              │ ← Top
+│  [Power Button] [LEDs]              │ ← Top Z=180mm
+│  Power: (0, 10, 175)                │
+│  LEDs: (0, 10, 170-176)             │
 │                                     │
 │  ┌─────────────────────────────┐   │
-│  │      Battery                │   │
+│  │ Battery                     │   │
+│  │ Center: (0, 0, 140)         │   │
+│  │ Z-range: 115-165mm          │   │
 │  └─────────────────────────────┘   │
 │                                     │
 │  ┌─────────────────────────────┐   │
-│  │      MCU + BLE              │   │
+│  │ MCU + BLE                   │   │
+│  │ Center: (0, 0, 90)          │   │
+│  │ Z-range: 70-110mm           │   │
 │  └─────────────────────────────┘   │
 │                                     │
 │  ┌─────────────────────────────┐   │
-│  │      IMU Sensor             │   │
+│  │ IMU Sensor (CRITICAL)       │   │
+│  │ Center: (0, 0, 15)          │   │
+│  │ Alignment: ±0.1°            │   │
 │  └─────────────────────────────┘   │
 │                                     │
 │  [Trigger Button]                  │
+│  Center: (10, 0, 50)                │
 │                                     │
 │  ┌─────────────────────────────┐   │
-│  │      Contact Sensor         │   │
+│  │ Contact Sensor              │   │
+│  │ Center: (0, 0, 2)           │   │
 │  └─────────────────────────────┘   │
 │                                     │
-│  [USB-C Port]                      │ ← Bottom
+│  [USB-C Port]                      │ ← Bottom Z=0-5mm
+│  Center: (0, 0, 3)                  │
 │  [Tip - Contact Point]             │
+│  Origin: (0, 0, 0)                 │
 └─────────────────────────────────────┘
+     Diameter: 20mm outer, 18mm inner
+     Z-axis: 0mm (tip) to 180mm (top)
 ```
+
+**Key Coordinate Points**:
+- Tip Center: (0, 0, 0)
+- Top Center: (0, 0, 180)
+- IMU Sensor: (0, 0, 15) - Critical alignment
+- PCB Center: (0, 0, 90)
+- Battery Center: (0, 0, 140)
+- Power Button: (0, 10, 175)
+- Trigger Button: (10, 0, 50)
+- USB-C: (0, 0, 3)
 
 ### 2.3 Enclosure Design
 - **Material**: Anodized aluminum (preferred) or reinforced plastic

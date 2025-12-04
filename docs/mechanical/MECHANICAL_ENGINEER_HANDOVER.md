@@ -1,25 +1,50 @@
-# GeoPen - Mechanical Engineer Handover Package
+# GeoPen - Engineering Design Package (All Engineers)
 
 ## Overview
 
-This document provides all necessary information for the mechanical engineer to begin design and development of the GeoPen enclosure and mechanical components.
+This document provides comprehensive 3D design information, geometric specifications, and coordinate systems for all engineers (mechanical, electrical, software, firmware) working on the GeoPen project. All components include 3D coordinate points, angles, lengths, and geometric relationships.
 
 **Project**: GeoPen - Core Alpha/Beta Angle Measurement Device  
 **Handover Date**: [Date]  
-**Target Timeline**: 3-4 months for prototype design
+**Target Timeline**: 3-4 months for prototype design  
+**Coordinate System**: Right-handed Cartesian (X, Y, Z) with origin at device tip center
 
 ## Executive Summary
 
-GeoPen is a pencil-like device for measuring geological core angles. The mechanical design must accommodate electronics, sensors, battery, and user interface while maintaining a portable, field-ready form factor.
+GeoPen is a pencil-like device for measuring geological core angles. This document provides complete 3D geometric specifications, coordinate systems, and design constraints for collaborative engineering work across all disciplines.
+
+## 3D Coordinate System & Reference Points
+
+### Global Coordinate System
+- **Origin (0, 0, 0)**: Center of device tip (contact point)
+- **Z-axis**: Device longitudinal axis (positive = upward toward top)
+- **X-axis**: Perpendicular to Z, horizontal plane (positive = right side)
+- **Y-axis**: Perpendicular to Z, horizontal plane (positive = front)
+- **Units**: Millimeters (mm)
+- **Angle Convention**: Right-hand rule, degrees
+
+### Key Reference Points
+```
+Tip Center:        P0 = (0, 0, 0)
+Top Center:         P1 = (0, 0, 180)
+Center of Gravity:  P2 = (0, 0, 90) [estimated]
+Grip Center:        P3 = (0, 0, 100)
+```
 
 ## Critical Requirements
 
-### Form Factor
+### Form Factor (Geometric Specifications)
 - **Shape**: Cylindrical, pencil-like
-- **Length**: 18 cm (7.1 inches) - **CRITICAL**
-- **Diameter**: 2.0 cm (0.79 inches) at grip - **CRITICAL**
+- **Length**: 180 mm (18 cm) - **CRITICAL**
+  - Tip to Top: 180 mm
+  - Tolerance: ±2 mm
+- **Diameter**: 20 mm (2.0 cm) at grip - **CRITICAL**
+  - Outer diameter: 20 mm
+  - Inner diameter: 18 mm (wall thickness: 1 mm)
+  - Tolerance: ±0.5 mm
 - **Weight**: 150-180 grams (target: <200g) - **CRITICAL**
 - **Ergonomics**: Comfortable grip for extended field use
+- **Cylindrical Axis Alignment**: Z-axis, deviation <0.1° - **CRITICAL**
 
 ### Environmental Protection
 - **IP Rating**: IP54 minimum (dust and splash resistant)
@@ -104,49 +129,189 @@ GeoPen is a pencil-like device for measuring geological core angles. The mechani
   - Protected from damage
   - IP54 sealing
 
-### Internal Layout Constraints
+### 3D Component Layout with Coordinates
 
 ```
+Coordinate System: Origin at tip center, Z-axis upward
+All coordinates in mm: (X, Y, Z)
+
 ┌─────────────────────────────────────┐
-│  [Power Button] [LEDs]              │ ← Top (18cm)
+│  [Power Button] [LEDs]              │ ← Top Z=180mm
+│  Power Button: (0, 10, 175)         │
+│  LEDs: (0, 10, 170-175)             │
 │                                     │
 │  ┌─────────────────────────────┐   │
-│  │      Battery (1000-1500mAh) │   │
-│  │      ~40-50mm length         │   │
+│  │ Battery (1000-1500mAh)      │   │
+│  │ Center: (0, 0, 140)         │   │
+│  │ Length: 40-50mm             │   │
+│  │ Z-range: 115-165mm          │   │
+│  │ Diameter: 16mm max          │   │
 │  └─────────────────────────────┘   │
 │                                     │
 │  ┌─────────────────────────────┐   │
-│  │      Main PCB               │   │
-│  │      MCU + BLE              │   │
-│  │      ~30-40mm length        │   │
+│  │ Main PCB                    │   │
+│  │ Center: (0, 0, 90)          │   │
+│  │ Length: 30-40mm             │   │
+│  │ Z-range: 70-110mm           │   │
+│  │ Width: 12-15mm              │   │
+│  │ Thickness: 1.6mm            │   │
 │  └─────────────────────────────┘   │
 │                                     │
 │  ┌─────────────────────────────┐   │
-│  │      IMU Sensor             │   │
-│  │      Near tip, aligned      │   │
+│  │ IMU Sensor (CRITICAL)       │   │
+│  │ Center: (0, 0, 15)          │   │
+│  │ Size: 3x3x1mm               │   │
+│  │ Alignment: Z-axis parallel  │   │
+│  │ Angle tolerance: ±0.1°     │   │
 │  └─────────────────────────────┘   │
 │                                     │
 │  [Trigger Button]                  │
+│  Center: (10, 0, 50)               │
+│  Angle: 90° from Z-axis            │
 │                                     │
 │  ┌─────────────────────────────┐   │
-│  │      Contact Sensor         │   │
-│  │      At tip                 │   │
+│  │ Contact Sensor              │   │
+│  │ Center: (0, 0, 2)           │   │
+│  │ At tip surface              │   │
 │  └─────────────────────────────┘   │
 │                                     │
-│  [USB-C Port]                      │ ← Bottom
+│  [USB-C Port]                      │ ← Bottom Z=0-5mm
+│  Center: (0, 0, 3)                 │
+│  Orientation: -Z direction          │
 │  [Tip - Contact Point]             │
+│  Origin: (0, 0, 0)                 │
 └─────────────────────────────────────┘
-     Diameter: 2.0cm (20mm)
+     Diameter: 20mm outer, 18mm inner
+     Z-axis: 0mm (tip) to 180mm (top)
 ```
 
-## Design Constraints
+### Component Coordinate Points
+
+#### 1. Main PCB Assembly
+- **Center Point**: P_PCB = (0, 0, 90)
+- **Dimensions**: 
+  - Length (Z): 30-40mm
+  - Width (X): 12-15mm
+  - Thickness (Y): 1.6mm
+- **Z-range**: 70mm to 110mm
+- **Orientation**: 
+  - PCB plane: X-Z plane
+  - Normal vector: (0, 1, 0)
+  - Angle: 0° rotation about Z-axis
+- **Mounting Points**: 
+  - M1 = (-7, 0, 75)
+  - M2 = (7, 0, 75)
+  - M3 = (-7, 0, 105)
+  - M4 = (7, 0, 105)
+
+#### 2. Battery
+- **Center Point**: P_BAT = (0, 0, 140)
+- **Dimensions**:
+  - Length (Z): 40-50mm
+  - Diameter: 16mm max (cylindrical) or 25x30x5mm (flat)
+- **Z-range**: 115mm to 165mm
+- **Orientation**: Z-axis aligned
+- **Mounting Points**: TBD based on battery type
+
+#### 3. IMU Sensor (CRITICAL - Accuracy Dependent)
+- **Center Point**: P_IMU = (0, 0, 15)
+- **Dimensions**: 
+  - Length: 3.0mm
+  - Width: 3.0mm
+  - Height: 0.95mm
+- **Orientation**: 
+  - Sensor X-axis: Device X-axis (parallel)
+  - Sensor Y-axis: Device Y-axis (parallel)
+  - Sensor Z-axis: Device Z-axis (parallel)
+  - **Alignment Tolerance**: ±0.1° - **CRITICAL**
+- **Mounting**: 
+  - Surface mount on PCB or dedicated board
+  - Mounting plane: X-Z plane at Y=0
+  - Reference corner: (-1.5, 0, 13.5)
+
+#### 4. Contact Sensor
+- **Center Point**: P_CONTACT = (0, 0, 2)
+- **Dimensions**: 3mm x 3mm x 1mm (pressure sensor) or 6mm x 6mm x 3.5mm (switch)
+- **Location**: Tip surface
+- **Orientation**: 
+  - Sensing surface: -Z direction (downward)
+  - Normal vector: (0, 0, -1)
+
+#### 5. USB-C Connector
+- **Center Point**: P_USB = (0, 0, 3)
+- **Dimensions**: 8.8mm x 2.5mm x 3.5mm
+- **Location**: Bottom of device
+- **Orientation**: 
+  - Connector axis: -Z direction
+  - Insertion angle: 0° (straight)
+- **Access**: Through bottom cover
+
+#### 6. Power Button
+- **Center Point**: P_PWR_BTN = (0, 10, 175)
+- **Dimensions**: 6mm x 6mm x 3.5mm
+- **Location**: Top section, side
+- **Orientation**: 
+  - Button axis: Radial (X direction)
+  - Angle from Z-axis: 90°
+- **LED Location**: P_PWR_LED = (0, 10, 173)
+
+#### 7. Trigger Button
+- **Center Point**: P_TRIG_BTN = (10, 0, 50)
+- **Dimensions**: 6mm x 6mm x 3.5mm
+- **Location**: Mid-section, side
+- **Orientation**: 
+  - Button axis: Radial (X direction)
+  - Angle from Z-axis: 90°
+  - Thumb-accessible position
+
+#### 8. Status LEDs
+- **LED1 (Power)**: P_LED1 = (0, 10, 170)
+- **LED2 (Measurement)**: P_LED2 = (0, 10, 172)
+- **LED3 (Battery)**: P_LED3 = (0, 10, 174)
+- **LED4 (Connection)**: P_LED4 = (0, 10, 176)
+- **Dimensions**: 3mm or 5mm diameter
+- **Orientation**: Radial outward (visible from side)
+
+#### 9. Optional Display
+- **Center Point**: P_DISP = (0, 10, 165)
+- **Dimensions**: 35mm x 20mm x 2mm
+- **Location**: Top section, side
+- **Orientation**: 
+  - Display plane: Y-Z plane
+  - Viewing angle: 0° (perpendicular to X-axis)
+
+## Geometric Design Constraints
 
 ### Critical Constraints
-1. **Diameter**: Maximum 2.0 cm (20mm) - **MUST NOT EXCEED**
-2. **Length**: 18 cm (180mm) - **TARGET, ±5mm acceptable**
+1. **Diameter**: Maximum 20mm (2.0 cm) - **MUST NOT EXCEED**
+   - Outer diameter: 20mm ±0.5mm
+   - Inner diameter: 18mm (wall thickness: 1mm)
+   - Circularity tolerance: ±0.1mm
+
+2. **Length**: 180mm (18 cm) - **TARGET, ±2mm acceptable**
+   - Tip to top: 180mm ±2mm
+   - Straightness: <0.5mm deviation from Z-axis
+
 3. **Weight**: <200g - **MUST NOT EXCEED**
+   - Target: 150-180g
+   - Center of gravity: Z = 90mm ±10mm
+
 4. **IMU Alignment**: Sensor axis must align with device axis - **CRITICAL**
+   - X-axis alignment: 0° ±0.1°
+   - Y-axis alignment: 0° ±0.1°
+   - Z-axis alignment: 0° ±0.1°
+   - Position tolerance: ±0.5mm in X, Y, Z
+
 5. **IP54 Rating**: Must be achievable with design
+   - Sealing surfaces: O-ring grooves
+   - Gap tolerance: <0.1mm when sealed
+
+### Geometric Tolerances
+- **Cylindricality**: ±0.1mm
+- **Parallelism**: ±0.1° (to Z-axis)
+- **Perpendicularity**: ±0.1° (to Z-axis)
+- **Position**: ±0.5mm (component placement)
+- **Angle**: ±0.1° (critical components), ±1° (non-critical)
 
 ### Manufacturing Constraints
 - **Volume**: Low to medium volume (1000-5000 units/year initially)
@@ -160,21 +325,47 @@ GeoPen is a pencil-like device for measuring geological core angles. The mechani
 - **Accessibility**: Buttons easily accessible
 - **Visibility**: LEDs visible in field conditions
 
-## Design Considerations
+## 3D Design Considerations
 
-### Thermal Management
-- **Heat Sources**: MCU, battery charging
+### Coordinate System for 3D Modeling
+- **CAD Software**: Use standard coordinate system
+- **Origin**: Tip center (0, 0, 0)
+- **Units**: Millimeters
+- **Precision**: 0.01mm for critical features, 0.1mm for general
+
+### Geometric Relationships
+- **Cylindrical Symmetry**: Device is rotationally symmetric about Z-axis
+- **Component Alignment**: All components aligned to Z-axis unless specified
+- **Angular Relationships**:
+  - Buttons: 90° from Z-axis (radial)
+  - LEDs: 90° from Z-axis (radial)
+  - USB-C: 0° (parallel to Z-axis, -Z direction)
+
+### Thermal Management (3D Considerations)
+- **Heat Sources**: MCU at (0, 0, 90), battery at (0, 0, 140)
+- **Heat Flow**: Radial outward, axial along Z-axis
 - **Requirements**: 
   - No active cooling
   - Passive heat dissipation
   - Temperature monitoring (sensor compensation)
+- **Thermal Paths**: 
+  - PCB to enclosure: Direct contact
+  - Battery to enclosure: Air gap + contact
 
-### Antenna Design
+### Antenna Design (3D Considerations)
 - **BLE Antenna**: Must be integrated or external
+- **Location Options**:
+  - PCB antenna: On PCB at (0, 0, 90), orientation TBD
+  - External antenna: Top section, Z=160-180mm
 - **Requirements**:
   - 10-meter range minimum
   - Not blocked by metal enclosure
-  - Consider PCB antenna vs. external
+  - Antenna axis: Prefer Z-axis or radial
+  - Clearance: 5mm minimum from metal
+- **3D Considerations**:
+  - Antenna pattern: Omni-directional preferred
+  - Ground plane: PCB ground plane location
+  - Enclosure effect: Metal enclosure may affect pattern
 
 ### Assembly Method
 - **Options**:
@@ -188,12 +379,52 @@ GeoPen is a pencil-like device for measuring geological core angles. The mechani
 - **Repair**: Design for field repair if possible
 - **Calibration**: Access to calibration points if needed
 
+## 3D Collaboration Guidelines
+
+### For All Engineers
+- **Coordinate System**: Use global coordinate system defined above
+- **Units**: Millimeters (mm) for all dimensions
+- **Angles**: Degrees (°) for all angles
+- **Precision**: 
+  - Critical features: 0.01mm
+  - General features: 0.1mm
+  - Angles: 0.1° (critical), 1° (general)
+
+### File Exchange Formats
+- **3D Models**: STEP (.step, .stp), IGES (.iges, .igs)
+- **2D Drawings**: PDF, DWG, DXF
+- **Point Data**: CSV, JSON with coordinate arrays
+- **CAD Native**: Keep native formats for collaboration
+
+### Component Point Data Format
+```json
+{
+  "component_name": "IMU_Sensor",
+  "center_point": {"x": 0, "y": 0, "z": 15},
+  "dimensions": {"length": 3.0, "width": 3.0, "height": 0.95},
+  "orientation": {
+    "x_axis": {"x": 1, "y": 0, "z": 0},
+    "y_axis": {"x": 0, "y": 1, "z": 0},
+    "z_axis": {"x": 0, "y": 0, "z": 1}
+  },
+  "mounting_points": [
+    {"x": -1.5, "y": 0, "z": 13.5},
+    {"x": 1.5, "y": 0, "z": 13.5}
+  ],
+  "tolerance": {
+    "position": 0.5,
+    "angle": 0.1
+  }
+}
+```
+
 ## Reference Documents
 
-### Must Read
-1. **`docs/design/product-specifications.md`** - Complete specifications
-2. **`docs/design/hardware-design.md`** - Hardware architecture and layout
+### Must Read (All Engineers)
+1. **`docs/design/product-specifications.md`** - Complete specifications with geometric data
+2. **`docs/design/hardware-design.md`** - Hardware architecture and 3D layout
 3. **`docs/requirements/product-requirements.md`** - Full requirements
+4. **`docs/mechanical/COMPONENT_DIMENSIONS.md`** - Component dimensions and coordinates
 
 ### Should Read
 4. **`docs/research/existing-tools.md`** - Competitive products for reference

@@ -2,11 +2,22 @@
 
 ## 1. Physical Specifications
 
-### 1.1 Dimensions
-- **Length**: 18 cm (7.1 inches)
-- **Diameter**: 2.0 cm (0.79 inches) at grip
-- **Weight**: 150-180 grams
+### 1.1 Dimensions & 3D Geometry
+- **Length**: 180 mm (18 cm, 7.1 inches)
+  - Tip to Top: 180 mm ±2 mm
+  - Z-axis range: 0 mm (tip) to 180 mm (top)
+- **Diameter**: 20 mm (2.0 cm, 0.79 inches) at grip
+  - Outer diameter: 20 mm ±0.5 mm
+  - Inner diameter: 18 mm (wall thickness: 1 mm)
+  - Circularity tolerance: ±0.1 mm
+- **Weight**: 150-180 grams (target: <200g)
 - **Form Factor**: Cylindrical, pencil-like shape
+- **Coordinate System**: 
+  - Origin (0,0,0): Tip center
+  - Z-axis: Longitudinal axis (positive upward)
+  - X-axis: Horizontal (positive right)
+  - Y-axis: Horizontal (positive front)
+- **Cylindrical Axis Alignment**: Z-axis, deviation <0.1°
 
 ### 1.2 Materials
 - **Body**: Anodized aluminum or reinforced plastic
